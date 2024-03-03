@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TwinculBun</string>
+    <string name="not_yet_registered_signup_now">Not yet registered? SignUp Now</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="login2">Login</string>
+    <string name="username">Username</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+</resources>
