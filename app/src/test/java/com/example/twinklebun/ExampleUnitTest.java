@@ -1,4 +1,4 @@
-package com.example.twinculbun;
+package com.example.twinklebun;
 
 import org.junit.Test;
 
