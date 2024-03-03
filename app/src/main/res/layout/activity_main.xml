@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_margin="30dp"
-        android:background="@drawable/coustom_txt"
+        android:background="@drawable/customer_edittext"
         app:cardCornerRadius="50dp"
         app:cardElevation="30dp">
 
@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="40dp"
-                android:background="@drawable/coustom_txt"
+                android:background="@drawable/customer_edittext"
                 android:drawableStart="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
                 android:hint="@string/username"
@@ -57,7 +57,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:autofillHints=""
-                android:background="@drawable/coustom_txt"
+                android:background="@drawable/customer_edittext"
                 android:drawableStart="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
                 android:hint="@string/password"
