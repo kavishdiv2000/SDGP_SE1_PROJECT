@@ -6,4 +6,8 @@
     <string name="login2">Login</string>
     <string name="username">Username</string>
     <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_home">Home</string>
+    <string name="title_badge">Badges</string>
+    <string name="title_Leadership">Leadership Board</string>
 </resources>
