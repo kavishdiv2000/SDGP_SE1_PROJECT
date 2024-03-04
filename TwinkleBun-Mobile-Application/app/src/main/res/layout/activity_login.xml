@@ -89,7 +89,10 @@
                 android:text="@string/sign_in_with_google"
                 android:textColor="@color/white"
                 app:icon="@drawable/google"
-                tools:ignore="RtlSymmetry" />
+                app:iconTint="@color/white"
+                app:iconTintMode="src_in"
+                app:iconSize="20dp"
+                tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
 
         </LinearLayout>
 
