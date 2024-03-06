@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "API-gateway"]
+    branches: [ "master","API-gateway"]
   pull_request:
-    branches: [ "API-gateway"]
+    branches: [ "master","API-gateway"]
 
 jobs:
   build:
