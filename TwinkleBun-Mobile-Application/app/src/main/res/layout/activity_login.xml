@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:paddingTop="155dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_margin="30dp"
-        android:background="@drawable/customer_edittext"
+        android:id="@+id/cardView"
+        android:layout_width="356dp"
+        android:layout_height="428dp"
+        android:layout_marginTop="155dp"
         app:cardCornerRadius="50dp"
-        app:cardElevation="30dp">
+        app:cardElevation="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/signupText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:orientation="vertical"
             android:padding="24dp">
 
@@ -48,8 +50,7 @@
                 android:importantForAutofill="no"
                 android:padding="8dp"
                 android:textColor="@color/black"
-                android:textColorHighlight="@color/cardview_dark_background"
-                tools:ignore="TextContrastCheck,TextFields" />
+                android:textColorHighlight="@color/cardview_dark_background" />
 
             <EditText
                 android:id="@+id/password"
@@ -64,10 +65,7 @@
                 android:inputType="textPassword"
                 android:padding="8dp"
                 android:textColor="@color/black"
-                android:textColorHighlight="@color/cardview_dark_background"
-                tools:ignore="TextContrastCheck">
-
-            </EditText>
+                android:textColorHighlight="@color/cardview_dark_background" />
 
             <Button
                 android:id="@+id/loginButton"
@@ -76,23 +74,21 @@
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/blue"
                 android:text="@string/login"
-                android:textSize="18sp"
-                app:cornerRadius="20dp"
-                tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/googleSignInButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:backgroundTint="@color/blue"
                 android:paddingStart="16dp"
                 android:text="@string/sign_in_with_google"
                 android:textColor="@color/white"
                 app:icon="@drawable/google"
-                app:iconTint="@color/white"
-                app:iconTintMode="src_in"
                 app:iconSize="20dp"
-                tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+                app:iconTint="@color/white"
+                app:iconTintMode="src_in" />
 
         </LinearLayout>
 
@@ -107,6 +103,8 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="14sp"
-        tools:ignore="TextContrastCheck" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
