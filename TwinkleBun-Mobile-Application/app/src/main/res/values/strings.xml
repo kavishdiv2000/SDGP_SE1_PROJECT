@@ -10,4 +10,12 @@
     <string name="title_home">Home</string>
     <string name="title_badge">Badges</string>
     <string name="title_Leadership">Leadership Board</string>
+    <string name="todo">TODO</string>
+    <string name="attempts">Attempts</string>
+    <string name="score">Score</string>
+    <string name="_0">0</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
 </resources>

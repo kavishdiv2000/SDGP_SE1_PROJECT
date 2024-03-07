@@ -11,5 +11,11 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
 
+    <color name="green">#56DC00</color>
+    <color name="red">#FF0000</color>
+    <color name="test">#CB0BE8FF</color>
+    <color name="darkred">#858585</color>
+    <color name="buttonp">#E80066</color>
+
 
 </resources>
