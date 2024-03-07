@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back2"
+    android:background="@drawable/multiplication_background"
 
     tools:context=".MultiplicationGame">
 
@@ -170,9 +170,10 @@
         android:layout_height="62dp"
 
 
+        android:backgroundTint="#DADADA"
         android:elevation="8dp"
         android:text="@string/_1"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="25sp"
         app:cornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -186,10 +187,11 @@
         android:id="@+id/button2"
         android:layout_width="89dp"
         android:layout_height="62dp"
+        android:backgroundTint="#DADADA"
+
         android:elevation="8dp"
         android:text="@string/_2"
-
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="25sp"
         app:cornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -203,9 +205,10 @@
         android:id="@+id/button3"
         android:layout_width="89dp"
         android:layout_height="62dp"
+        android:backgroundTint="#DADADA"
         android:elevation="8dp"
         android:text="@string/_3"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="25sp"
         app:cornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -219,9 +222,10 @@
         android:id="@+id/button4"
         android:layout_width="89dp"
         android:layout_height="62dp"
+        android:backgroundTint="#DADADA"
         android:elevation="8dp"
         android:text="@string/_4"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="25sp"
         app:cornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
