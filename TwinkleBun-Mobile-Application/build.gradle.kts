@@ -3,19 +3,10 @@ plugins {
     id("com.android.application") version "8.2.0" apply false
 }
 
- android {
-     defaultConfig {
-         …
-         minSdkVersion 24
-     }
- }
 allprojects {
     repositories {
         google()
-        // Add other repositories here if needed
+        mavenCentral()
+        mavenLocal()
     }
-}
-dependencies {
-    …
-    implementation 'com.google.ar:core:1.33.0'
 }
