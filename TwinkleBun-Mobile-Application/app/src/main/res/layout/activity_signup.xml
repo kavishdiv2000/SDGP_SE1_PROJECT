@@ -59,7 +59,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/customer_edittext"
-                android:drawableLeft="@drawable/baseline_person_24"
+                android:drawableLeft="@drawable/email"
                 android:drawablePadding="8dp"
                 android:hint="Email"
                 android:padding="8dp"
@@ -115,16 +115,20 @@
                 android:backgroundTint="@color/blue"
                 android:text="Complete Account!"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:cornerRadius="20dp" />
 
             <Button
-                android:id="@+id/google"
+                android:id="@+id/googleButton"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
                 android:backgroundTint="@color/blue"
                 android:text="Sign up with Goggle"
-                android:textSize="20sp"
-                app:cornerRadius="20dp" />
+                android:textSize="16sp"
+                app:icon="@drawable/google"
+                app:iconSize="20dp"
+                app:cornerRadius="20dp"
+                />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
