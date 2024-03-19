@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
+const config = require('./config/config');
 const user = require('./routes/user');
-const auth = require('./middleware/authAcess');
+const auth = require('./middleware/authAccess');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 
@@ -11,12 +12,11 @@ app.use(express.json({limit: '10mb'})); // to support JSON-encoded bodies
 app.use(helmet()); // Helmet helps you secure your Express apps by setting various HTTP headers.
 
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
+  windowMs: 10 * 60 * 1000, // 10 minutes
   max: 100, // limit each IP to 100 requests per windowMs
 });
 app.use(limiter); //  apply to all requests
 app.use("/api/user",auth,user); 
-
 
 
 app.get('/', (req, res) => {
@@ -24,10 +24,8 @@ app.get('/', (req, res) => {
 });
 
 
+const PORT = config.port;
 
-
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
+app.listen(config.port, () => {
   console.log(`Server is running on port ${PORT}`);
 });
