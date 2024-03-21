@@ -3,7 +3,7 @@ require('dotenv').config();
 module.exports = {
     port: process.env.PORT || 3000,
     db: {
-      url: process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/'
+      url: process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/twinklebun'
     },
     openai: {
       apiKey: process.env.OPENAI_API_KEY

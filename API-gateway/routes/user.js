@@ -28,7 +28,7 @@ router.route('/')
   })
 
 
-  let refreshTokens = [];
+
   router.get('/login', (req, res) => {
     //DB
     //OK
@@ -36,10 +36,17 @@ router.route('/')
     const user = {name: username};
 
     console.log("user",user);
-    const accessToken = jwt.sign(user,process.env.SECRET_KEY,{expiresIn:'1h'})
-    const refreshToken = jwt.sign(user,process.env.REFRESH_TOKEN_SECRET,{expiresIn:'10d'})
-    refreshTokens.push(refreshToken);
-    res.send({accessToken,refreshToken});
+    // const accessToken = jwt.sign(user,process.env.SECRET_KEY,{expiresIn:'1h'})
+    if(username === "kavishadmin"){
+      const tempToken = jwt.sign({"user":"hi how are you"},process.env.TEMP_JWT_SECRET,{expiresIn:'2d'})
+      res.json({tempToken:tempToken});
+    
+    }else{
+      res.send("Invalid user")
+    }
+    
+    
+    // res.send({accessToken,refreshToken});
   })
 
 

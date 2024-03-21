@@ -1,5 +1,5 @@
 const { Configuration, OpenAI } = require('openai');
-const config = require('./config');
+const config = require('../config/config');
 
 // Configure OpenAI API
 const openai = new OpenAI({
@@ -7,7 +7,8 @@ const openai = new OpenAI({
   });
 
 
-const  generateQuestionsAndAnswers = async (content,numOfQuestions) => {
+async function generateQuestionsAndAnswers(content, numOfQuestions) {
+   
   
     const prompt = `Generate ${numOfQuestions} multiple choice questions with answers based on the following content:
     
@@ -47,9 +48,11 @@ const  generateQuestionsAndAnswers = async (content,numOfQuestions) => {
         });
     
         const generatedMCQ = response.choices[0].text;
-        console.log(response);
-        console.log(generatedMCQ);
+        // console.log(response);
+        // console.log(generatedMCQ);
         const jsonFormate = JSON.parse(generatedMCQ)
+
+        // res.status(200).json(jsonFormate);
 
         return jsonFormate;
        

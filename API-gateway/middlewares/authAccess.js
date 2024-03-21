@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+
 const { verifyToken } = require('../config/jwt');
 require('dotenv').config();
 
@@ -10,7 +10,6 @@ const authJWT  = (req,res,next)=>{
         if (!token) {
             return res.sendStatus(401);
         }
-
         
         try {
             const decoded = verifyToken(token);

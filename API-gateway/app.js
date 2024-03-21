@@ -2,11 +2,21 @@ const express = require('express')
 const app = express()
 const config = require('./config/config');
 const user = require('./routes/user');
-const auth = require('./middleware/authAccess');
+const paperRoutes = require('./routes/generatePaperRoutes');
+const auth = require('./middlewares/authAccess');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
+const mongoose = require('mongoose');
 
 require('dotenv').config();
+
+mongoose
+  .connect(config.db.url)
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((err) => console.error('Error connecting to MongoDB', err));
+
+
+
 
 app.use(express.json({limit: '10mb'})); // to support JSON-encoded bodies
 app.use(helmet()); // Helmet helps you secure your Express apps by setting various HTTP headers.
@@ -16,7 +26,10 @@ const limiter = rateLimit({
   max: 100, // limit each IP to 100 requests per windowMs
 });
 app.use(limiter); //  apply to all requests
-app.use("/api/user",auth,user); 
+app.use("/api/user",user); 
+app.use("/api/paper",paperRoutes);
+
+
 
 
 app.get('/', (req, res) => {

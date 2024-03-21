@@ -1,34 +1,13 @@
 const express = require ('express');
-const jwt = require('jsonwebtoken');
+const openaiController = require('../controller/openaiController');
+const authMiddleware = require('../middlewares/authAccess');
+const tempAuth = require('../middlewares/authTemp');
 require('dotenv').config();
 
 
 const router = express.Router();
 
 
-router.route('/')
-.get((req, res) => {
-    res.send({"msg":`router is working`, "user":req.user})
-  })
-.post((req, res) => {
-    res.send({"msg":"User router is working post"})
-  })
-
-// router.get('/', (req, res) => {
-//   res.send({"msg":`router is working`, "user":req.user})
-// })
-
-
-// router.post('/', (req, res) => {
-//     res.send({"msg":"User router is working post"})
-//   })
-
-  router.get('/add', (req, res) => {
-    res.send({"msg":"User added"})
-  })
-
-
-  
-
+router.get('/process-generate-content', tempAuth, openaiController.processContent);
 
 module.exports = router;
