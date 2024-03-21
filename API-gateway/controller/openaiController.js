@@ -6,7 +6,7 @@ const processContent = async (req, res) => {
   const numOfQuestions = req.body.num;
   const a = parseInt(numOfQuestions);
 
-  if (typeof a !== "number" || a<1 || a>10) {
+  if (typeof a !== "number" || a<1 || a>10 || isNaN(a)) {
     return res.status(400).json({ message: 'Invalid number of questions' });
   }
 
