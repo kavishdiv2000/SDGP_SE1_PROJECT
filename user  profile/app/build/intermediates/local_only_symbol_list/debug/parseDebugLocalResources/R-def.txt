@@ -1,0 +1,26 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color blue
+color white
+drawable btn_background_1
+drawable btn_background_2
+drawable circles
+drawable customer_edittext
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable notification
+drawable profile
+drawable settings
+drawable user_background
+drawable wallet
+id profile_image
+id user_name
+layout user_profile
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Base.Theme.UseProfile
+style Theme.UseProfile
+xml backup_rules
+xml data_extraction_rules
