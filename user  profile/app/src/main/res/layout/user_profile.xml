@@ -3,13 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="16dp">
+    android:background="@drawable/user_Background">
 
     <ImageView
         android:id="@+id/profile_image"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginStart="26dp"
         android:src="@drawable/profile"/>
 
     <TextView
@@ -18,7 +19,7 @@
         android:layout_height="150dp"
         android:text="Sandaru Chandupa"
         android:textSize="24sp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="55dp"
         android:layout_marginStart="16dp"
         android:gravity="center_vertical"
         android:textStyle="bold"/>
