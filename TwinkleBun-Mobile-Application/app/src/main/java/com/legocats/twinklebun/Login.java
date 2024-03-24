@@ -56,9 +56,9 @@ public class Login extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Intent mainIntent =  new Intent(Login.this, Home.class);
-                Login.this.startActivity(mainIntent);
-                Login.this.finish();
+                final Intent mainIntent =  new Intent(Login.this, ReviseHubMain.class);
+                startActivity(mainIntent);
+
             }
         });
         ActivityResultLauncher<IntentSenderRequest> activityResultlauncher =

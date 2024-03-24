@@ -9,8 +9,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +30,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.mlkit.vision.common.InputImage;
+import com.google.mlkit.vision.text.Text;
 import com.google.mlkit.vision.text.TextRecognition;
 import com.google.mlkit.vision.text.TextRecognizer;
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
@@ -41,11 +46,14 @@ public class ReviseHubMain extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private static final int CAMERA_REQUEST_CODE = 2;
     private ImageView ivImage;
-    private TextView tvResult;
-    private Button btnSelectImage, btnTakePicture;
+    private TextView tvResult,characterCountTextView;
+    private Button btnSelectImage, btnTakePicture, btnNextScreen;
     private UCrop.Options uOptions;
     private TextRecognizer textRecognizer;
-    private String currentPhotoPath;
+    private String currentPhotoPath, textData;
+    private EditText textEditor;
+    private int charactersEntered;
+    private final int MAX_CHARACTER_COUNT=3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,14 +73,20 @@ public class ReviseHubMain extends AppCompatActivity {
         uOptions.setActiveControlsWidgetColor(ContextCompat.getColor(this, R.color.primary_blue));
 
 
-        ivImage = findViewById(R.id.ivImage);
+//        ivImage = findViewById(R.id.ivImage);
 //        tvResult = findViewById(R.id.tvResult);
+        characterCountTextView = findViewById(R.id.characterCountTextView);
         btnSelectImage = findViewById(R.id.btnSelectImage);
         btnTakePicture = findViewById(R.id.btnTakePicture);
+        btnNextScreen = findViewById(R.id.next);
+        textEditor = findViewById(R.id.editText);
 
         // Initialize the Text Recognizer
         TextRecognizerOptions options = new TextRecognizerOptions.Builder().build();
         textRecognizer = TextRecognition.getClient(options);
+
+
+        characterCountTextView.setText("Characters entered: " + charactersEntered+"/3000");
 
         btnSelectImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +101,55 @@ public class ReviseHubMain extends AppCompatActivity {
                 takePicture();
             }
         });
+
+        btnNextScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textData = textEditor.getText().toString();
+                Intent intent = new Intent(ReviseHubMain.this, ReviseHubConfig.class);
+                intent.putExtra("SCANNED_DATA", textData);
+                startActivity(intent);
+
+            }
+        });
+
+
+
+
+        textEditor.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // Not used in this example
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Update the character count TextView
+                charactersEntered = s.length();
+                characterCountTextView.setText("Characters entered: " + charactersEntered+"/3000");
+
+                // Inhibit text entry if the character count exceeds the maximum
+
+                if (charactersEntered > MAX_CHARACTER_COUNT) {
+                    textEditor.setFilters(new InputFilter[]{new InputFilter.LengthFilter(MAX_CHARACTER_COUNT-1)});
+                } else {
+                    // No filter is needed, allow unlimited text input
+                    textEditor.setFilters(new InputFilter[0]);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Not used in this example
+            }
+        });
+
+
+
+
+
+
+
     }
 
     private void selectImage() {
@@ -137,7 +200,7 @@ public class ReviseHubMain extends AppCompatActivity {
             Uri croppedImageUri = UCrop.getOutput(data);
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), croppedImageUri);
-                ivImage.setImageBitmap(bitmap);
+//                ivImage.setImageBitmap(bitmap);
                 recognizeText(bitmap);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -156,14 +219,19 @@ public class ReviseHubMain extends AppCompatActivity {
         InputImage image = InputImage.fromBitmap(bitmap, 0);
         Task<com.google.mlkit.vision.text.Text> result =
                 textRecognizer.process(image)
-                        .addOnSuccessListener(new OnSuccessListener<com.google.mlkit.vision.text.Text>() {
+                        .addOnSuccessListener(new OnSuccessListener<Text>() {
                             @Override
-                            public void onSuccess(com.google.mlkit.vision.text.Text visionText) {
+                            public void onSuccess(Text visionText) {
                                 StringBuilder resultText = new StringBuilder();
-                                for (com.google.mlkit.vision.text.Text.TextBlock block : visionText.getTextBlocks()) {
+                                for (Text.TextBlock block : visionText.getTextBlocks()) {
                                     resultText.append(block.getText()).append("\n");
                                 }
-//                                tvResult.setText(resultText.toString());
+//                                tvResult.setText();
+//                                String myString = "Hello, world!";
+
+                                textData = resultText.toString();
+                                textEditor.setText(textData);
+
                             }
                         })
                         .addOnFailureListener(
