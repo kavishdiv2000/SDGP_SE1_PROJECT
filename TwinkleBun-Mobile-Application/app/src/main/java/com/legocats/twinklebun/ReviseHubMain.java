@@ -105,10 +105,15 @@ public class ReviseHubMain extends AppCompatActivity {
         btnNextScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textData = textEditor.getText().toString();
-                Intent intent = new Intent(ReviseHubMain.this, ReviseHubConfig.class);
-                intent.putExtra("SCANNED_DATA", textData);
-                startActivity(intent);
+
+                if(charactersEntered >199){
+                    textData = textEditor.getText().toString();
+                    Intent intent = new Intent(ReviseHubMain.this, ReviseHubConfig.class);
+                    intent.putExtra("SCANNED_DATA", textData);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(ReviseHubMain.this, "The content must have minimum 200 characters!", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });

@@ -52,6 +52,8 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("com.google.mlkit:text-recognition:16.0.0")
     implementation("com.github.yalantis:ucrop:2.2.8-native")
+    implementation("androidx.legacy:legacy-support-core-ui:1.0.0")
+    implementation("com.google.code.gson:gson:2.8.7")
 
 
 
