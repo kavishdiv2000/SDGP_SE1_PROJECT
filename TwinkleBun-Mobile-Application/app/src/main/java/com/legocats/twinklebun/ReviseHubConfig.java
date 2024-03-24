@@ -125,6 +125,8 @@ public class ReviseHubConfig extends AppCompatActivity {
                         try {
                             textView.setText(responseBody.toString());
                             Log.d("myTag",responseBody.toString());
+                            Log.d("myTag","hi response passed");
+
 
                             JsonReader reader = new JsonReader(new StringReader(responseBody));
                             reader.setLenient(true); // Set the JsonReader to be lenient
