@@ -57,8 +57,8 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final Intent mainIntent =  new Intent(Login.this, Home.class);
-                Login.this.startActivity(mainIntent);
-                Login.this.finish();
+                startActivity(mainIntent);
+
             }
         });
         ActivityResultLauncher<IntentSenderRequest> activityResultlauncher =
