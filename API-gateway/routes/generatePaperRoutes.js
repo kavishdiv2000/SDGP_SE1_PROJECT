@@ -8,6 +8,6 @@ require('dotenv').config();
 const router = express.Router();
 
 
-router.get('/process-generate-content', tempAuth, openaiController.processContent);
+router.post('/process-generate-content', tempAuth, openaiController.processContent);
 
 module.exports = router;
