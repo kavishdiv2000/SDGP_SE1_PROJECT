@@ -24,8 +24,8 @@ public class SplashScreen extends AppCompatActivity {
             }
         },3000);
 
-//        ActionBar actionBar = getSupportActionBar();
-//        actionBar.hide();
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
     }
 }
