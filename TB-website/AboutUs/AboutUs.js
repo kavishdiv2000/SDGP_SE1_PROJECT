@@ -1,9 +1,9 @@
 const popupImages = {
-    circular_portrait1: '../images/popup_image1.jpg',
-    circular_portrait2: '../images/popup_image2.jpg',
-    circular_portrait3: '../images/popup_image3.jpg',
-    circular_portrait4: '../images/popup_image4.jpg',
-    circular_portrait5: '../images/popup_image5.jpg',
+    circular_portrait1: '../images/Kavish_Profile.png',
+    circular_portrait2: '../images/Rumal_Profile.png',
+    circular_portrait3: '../images/Chandupa_Profile.png',
+    circular_portrait4: '../images/Shashank_Profile.png',
+    circular_portrait5: '../images/Felishia_Profile.png',
 };
 
 function openPopup(imageSrc) {
