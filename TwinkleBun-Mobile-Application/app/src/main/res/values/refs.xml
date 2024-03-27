@@ -8,4 +8,5 @@
     <drawable name="android" />
     <drawable name="php" />
     <drawable name="nodejs" />
+    <drawable name="paper_over" />
 </resources>
