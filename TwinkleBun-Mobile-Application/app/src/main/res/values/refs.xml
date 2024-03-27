@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="bootstrap" />
+    <drawable name="github" />
+    <drawable name="java" />
+    <drawable name="mysql" />
+    <drawable name="python" />
+    <drawable name="android" />
+    <drawable name="php" />
+    <drawable name="nodejs" />
+</resources>
