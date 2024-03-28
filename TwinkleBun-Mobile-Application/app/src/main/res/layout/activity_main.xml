@@ -5,73 +5,100 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <!-- First Card -->
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@android:color/holo_blue_light"
-        android:layout_margin="8dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="20dp"
+        android:radius="16dp">
 
-        <ImageView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/revise_hub"
-            android:scaleType="centerCrop"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@android:color/holo_blue_light">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Card 1"
-            android:textSize="24sp"
-            android:textColor="@android:color/white"
-            android:layout_margin="8dp"/>
-        
-    </LinearLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:src="@drawable/revise_hub"
+                android:scaleType="centerCrop"/>
 
-    <LinearLayout
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ReviseHub"
+                android:textSize="24sp"
+                android:textColor="@android:color/white"
+                android:layout_margin="8dp"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Second Card -->
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@android:color/holo_green_light"
-        android:layout_margin="8dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="20dp"
+        android:radius="16dp">
 
-        <ImageView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/lets_multiply"
-            android:scaleType="centerCrop"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@android:color/holo_green_light">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Card 2"
-            android:textSize="24sp"
-            android:textColor="@android:color/white"
-            android:layout_margin="8dp"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:src="@drawable/lets_multiply"
+                android:scaleType="centerCrop"/>
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Let's Multiply"
+                android:textSize="24sp"
+                android:textColor="@android:color/white"
+                android:layout_margin="8dp"/>
 
-    <LinearLayout
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Third Card -->
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@android:color/holo_red_light"
-        android:layout_margin="8dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="20dp"
+        android:radius="16dp">
 
-        <ImageView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/scholar_papers"
-            android:scaleType="centerCrop"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@android:color/holo_red_light">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Card 3"
-            android:textSize="24sp"
-            android:textColor="@android:color/white"
-            android:layout_margin="8dp"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:src="@drawable/scholar_papers"
+                android:scaleType="centerCrop"/>
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Scholarship Papers"
+                android:textSize="24sp"
+                android:textColor="@android:color/white"
+                android:layout_margin="8dp"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>
