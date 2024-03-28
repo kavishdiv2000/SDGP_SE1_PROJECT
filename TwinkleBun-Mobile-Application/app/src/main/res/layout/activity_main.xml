@@ -5,13 +5,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!-- First Card -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to TwinkleBun"
+        android:textColor="@android:color/black"
+        android:textSize="28sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The roots of education are bitter, but the fruit is sweet"
+        android:textColor="#A9A9A9"
+        android:textSize="15sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="20dp"/>
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_margin="20dp"
-        android:radius="16dp">
+        android:cardCornerRadius="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,7 +47,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ReviseHub"
+                android:text="Revise Hub"
                 android:textSize="24sp"
                 android:textColor="@android:color/white"
                 android:layout_margin="8dp"/>
@@ -37,19 +55,18 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Second Card -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_margin="20dp"
-        android:radius="16dp">
+        android:cardCornerRadius="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@android:color/holo_green_light">
+            android:background="#B1D642">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -68,20 +85,19 @@
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-    <!-- Third Card -->
+    
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_margin="20dp"
-        android:radius="16dp">
+        android:cardCornerRadius="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@android:color/holo_red_light">
+            android:background="#FA7272">
 
             <ImageView
                 android:layout_width="match_parent"
