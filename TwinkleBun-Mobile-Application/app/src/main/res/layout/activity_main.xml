@@ -18,133 +18,79 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="The roots of education are bitter, but the fruit is sweet"
-        android:textColor="#A9A9A9"
+        android:textColor="#615F5F"
         android:textSize="15sp"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="20dp"/>
 
-    <!-- First Card -->
-    <androidx.cardview.widget.CardView
+    <!-- Wrapper LinearLayout to center the cards -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_margin="20dp"
-        android:cardCornerRadius="16dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
 
-        <LinearLayout
+        <!-- First Card -->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@android:color/holo_blue_light">
+            android:layout_height="100dp"
+            android:layout_margin="20dp">
 
-            <ImageView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/revise_hub"
-                android:scaleType="centerCrop"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@android:color/holo_blue_light">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Revise Hub"
-                android:textSize="20sp"
-                android:textColor="@android:color/white"
-                android:layout_margin="8dp"/>
+                <ImageView
+                    android:layout_width="370dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/revise_hub"
+                    android:scaleType="centerCrop"/>
 
-            <!-- Subheading -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Revise your subjects in an interactive way"
-                android:textSize="15sp"
-                android:textColor="#FFFFFF"
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="8dp"/>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-    <!-- Second Card -->
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_margin="20dp"
-        android:cardCornerRadius="16dp">
-
-        <LinearLayout
+        <!-- Second Card -->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="#B1D642">
+            android:layout_height="100dp"
+            android:layout_margin="20dp">
 
-            <ImageView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/lets_multiply"
-                android:scaleType="centerCrop"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="#778BFB">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Let's Multiply"
-                android:textSize="20sp"
-                android:textColor="@android:color/white"
-                android:layout_margin="8dp"/>
+                <ImageView
+                    android:layout_width="370dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/lets_multiply"
+                    android:scaleType="centerCrop"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-            <!-- Subheading -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Improve your multiplication skills."
-                android:textSize="15sp"
-                android:textColor="#FFFFFF"
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="8dp"/>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <!-- Third Card -->
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_margin="20dp"
-        android:cardCornerRadius="16dp">
-
-        <LinearLayout
+        <!-- Third Card -->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="#FA7272">
+            android:layout_height="100dp"
+            android:layout_margin="20dp">
 
-            <ImageView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/scholar_papers"
-                android:scaleType="centerCrop"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="#5CC9FA">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Scholarship Papers"
-                android:textSize="20sp"
-                android:textColor="@android:color/white"
-                android:layout_margin="8dp"/>
-
-            <!-- Subheading -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Practice Scholarship past paper questions."
-                android:textSize="15sp"
-                android:textColor="#FFFFFF"
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="8dp"/>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                <ImageView
+                    android:layout_width="370dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/scholarship_papers"
+                    android:scaleType="centerCrop"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
 
 </LinearLayout>
