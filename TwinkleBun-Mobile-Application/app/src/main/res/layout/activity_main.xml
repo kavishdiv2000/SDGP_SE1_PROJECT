@@ -24,6 +24,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="20dp"/>
 
+    <!-- First Card -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -48,13 +49,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Revise Hub"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:textColor="@android:color/white"
                 android:layout_margin="8dp"/>
 
+            <!-- Subheading -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Revise your subjects in an interactive way"
+                android:textSize="15sp"
+                android:textColor="#FFFFFF"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+    <!-- Second Card -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -79,13 +90,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Let's Multiply"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:textColor="@android:color/white"
                 android:layout_margin="8dp"/>
 
+            <!-- Subheading -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Improve your multiplication skills."
+                android:textSize="15sp"
+                android:textColor="#FFFFFF"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-    
+
+    <!-- Third Card -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -110,10 +131,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Scholarship Papers"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:textColor="@android:color/white"
                 android:layout_margin="8dp"/>
 
+            <!-- Subheading -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Practice Scholarship past paper questions."
+                android:textSize="15sp"
+                android:textColor="#FFFFFF"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
