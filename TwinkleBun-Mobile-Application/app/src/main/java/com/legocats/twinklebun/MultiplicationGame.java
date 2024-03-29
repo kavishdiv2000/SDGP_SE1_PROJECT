@@ -102,7 +102,7 @@ public class MultiplicationGame extends AppCompatActivity {
                 public void run() {
 
                     colorBack();
-                    text.setText(Arrays.toString(btnStore)+Arrays.toString(value));
+//                    text.setText(Arrays.toString(btnStore)+Arrays.toString(value));
                 }
             }, 3000);
 
@@ -121,7 +121,7 @@ public class MultiplicationGame extends AppCompatActivity {
                     @Override
                     public void run() {
                         colorBack();
-                        text.setText(Arrays.toString(btnStore)+Arrays.toString(value));
+//                        text.setText(Arrays.toString(btnStore)+Arrays.toString(value));
                     }
                 }, 3000);
 
@@ -141,7 +141,7 @@ public class MultiplicationGame extends AppCompatActivity {
                     public void run() {
 
                         colorBack();
-                        text.setText(Arrays.toString(btnStore)+Arrays.toString(value));
+//                        text.setText(Arrays.toString(btnStore)+Arrays.toString(value));
                     }
                 }, 3000);
 
@@ -161,7 +161,7 @@ public class MultiplicationGame extends AppCompatActivity {
                     public void run() {
 
                         colorBack();
-                        text.setText(Arrays.toString(btnStore)+Arrays.toString(value));
+//                        text.setText(Arrays.toString(btnStore)+Arrays.toString(value));
                     }
                 }, 3000);
 
