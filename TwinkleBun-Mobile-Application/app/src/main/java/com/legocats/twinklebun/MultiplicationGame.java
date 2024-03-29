@@ -87,6 +87,7 @@ public class MultiplicationGame extends AppCompatActivity {
         btnMapDic.put("4",bt4);
 
         times = 2;
+        colorBack();
 
 
 
@@ -100,7 +101,7 @@ public class MultiplicationGame extends AppCompatActivity {
                 @Override
                 public void run() {
 
-
+                    colorBack();
                     text.setText(Arrays.toString(btnStore)+Arrays.toString(value));
                 }
             }, 3000);
@@ -119,7 +120,7 @@ public class MultiplicationGame extends AppCompatActivity {
                 view.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-
+                        colorBack();
                         text.setText(Arrays.toString(btnStore)+Arrays.toString(value));
                     }
                 }, 3000);
@@ -138,7 +139,8 @@ public class MultiplicationGame extends AppCompatActivity {
                 view.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        
+
+                        colorBack();
                         text.setText(Arrays.toString(btnStore)+Arrays.toString(value));
                     }
                 }, 3000);
@@ -158,7 +160,7 @@ public class MultiplicationGame extends AppCompatActivity {
                     @Override
                     public void run() {
 
-
+                        colorBack();
                         text.setText(Arrays.toString(btnStore)+Arrays.toString(value));
                     }
                 }, 3000);
@@ -229,6 +231,31 @@ public class MultiplicationGame extends AppCompatActivity {
         bt2.setEnabled(false);
         bt3.setEnabled(false);
         bt4.setEnabled(false);
+
+    }
+
+
+    protected void colorBack(){
+
+        bt1.setBackgroundColor(ContextCompat.getColor(this, R.color.purple_500));
+        bt2.setBackgroundColor(ContextCompat.getColor(this, R.color.purple_500));
+        bt3.setBackgroundColor(ContextCompat.getColor(this, R.color.purple_500));
+        bt4.setBackgroundColor(ContextCompat.getColor(this, R.color.purple_500));
+
+        bt1.setTextColor(ContextCompat.getColor(this, R.color.white));
+        bt2.setTextColor(ContextCompat.getColor(this, R.color.white));
+        bt3.setTextColor(ContextCompat.getColor(this, R.color.white));
+        bt4.setTextColor(ContextCompat.getColor(this, R.color.white));
+        generate();
+        buttonMapValue();
+        String textToBeDisplayed = "2 X "+value[0]+" = ?";
+        text.setText(textToBeDisplayed);
+        bt1.setEnabled(true);
+        bt2.setEnabled(true);
+        bt3.setEnabled(true);
+        bt4.setEnabled(true);
+
+
 
     }
 
