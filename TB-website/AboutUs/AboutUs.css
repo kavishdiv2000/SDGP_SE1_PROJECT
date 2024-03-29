@@ -1,0 +1,126 @@
+body {
+    /* background-color: #95d3fd; */
+    /* background-image: url('./Images/AboutUs_background.mp4');
+    background-size: 100% ; 
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+
+}
+
+
+.background-clip {
+    position: absolute; 
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+
+
+.circular_portrait {
+    position: absolute;
+    overflow: hidden; 
+    border-radius: 50%; }
+
+.circular_portrait1 { 
+    top: 5%;
+    left: 45%;
+    width: 10%; 
+    height: 21%; } 
+
+.circular_portrait2 { 
+    top: 25%;
+    left: 27%;
+    width: 10%; 
+    height: 21%; } 
+    
+.circular_portrait3 {   
+    top: 70%;
+    left: 30%;
+    width: 10%; 
+    height: 21%;  } 
+    
+.circular_portrait4 { 
+    top: 70%;
+    left: 61%;
+    width: 10%; 
+    height: 21%;  } 
+    
+.circular_portrait5 { 
+    top: 25%;
+    left: 64%;
+    width: 10%; 
+    height: 21%;  } 
+
+.Images img {
+    width: 100%; 
+    height: 100%;
+}
+
+.individual_details { 
+    position: absolute;
+    top: 30%;
+    left: 38%;
+    width: 25%; 
+    height: 50%;
+    overflow: hidden; 
+    border-radius: 50%; } 
+    
+    .individual_details img { 
+        width: 100%; 
+        height: 100%; }
+
+
+
+.image-popup {
+    display: none;
+    position: absolute;
+    top: 29%;
+    left: 37.5%;
+    width: 25%; 
+    height: 51%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%; 
+    overflow: hidden; 
+    border: 10px solid #0056b3;
+    border-style: double;
+}
+
+.image-popup img {
+    border-radius: 50%;
+    width: 100%; 
+    height: 100%;
+}
+
+
+@keyframes gb-popup-scale-blur {
+    0% {
+        opacity: 0;
+        transform-origin: 50% 50%;
+        transform: scale(1);
+        filter: blur(50px);
+    }
+    100% {
+        opacity: 1;
+        transform-origin: 50% 50%;
+        transform: scale(1);
+        filter: blur(0px);
+    }
+}
+
+.image-popup.gb-popup-scale-blur {
+    animation: gb-popup-scale-blur 0.7s both;
+}
+
+
+.circular_portrait:hover {
+    border: 10px solid #0056b3;
+}
+
+   
