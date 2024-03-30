@@ -13,17 +13,15 @@ import androidx.appcompat.app.AppCompatActivity;
 public class PastPaperActivity extends AppCompatActivity {
 
     private final int[] questionImages = {
-            R.drawable.question1, // Replace with actual image resources
+            R.drawable.question1,
             R.drawable.question2,
             R.drawable.q5,
-            // Add corresponding image resources for each question
     };
 
     private final int[][] answers = {
             {1, 2, 3},
             {2, 3, 5},
             {2, 3, 5}
-            // Add corresponding answers for each question
     };
 
     private final int[] correctAnswers = {
@@ -38,7 +36,7 @@ public class PastPaperActivity extends AppCompatActivity {
     private RadioGroup answersRadioGroup;
     private ImageView questionImageView;
     private Button nextButton;
-    private TextView textViewScore; // Added TextView to display the score
+    private TextView textViewScore;
 
     private int correctAnswersCount = 0;
 
@@ -50,11 +48,11 @@ public class PastPaperActivity extends AppCompatActivity {
         questionImageView = findViewById(R.id.imageQuestion);
         answersRadioGroup = findViewById(R.id.allAnswers);
         nextButton = findViewById(R.id.nextButton);
-        textViewScore = findViewById(R.id.textViewScore); // Find the TextView
+        textViewScore = findViewById(R.id.textViewScore);
 
         totalQuestions = questionImages.length;
 
-        nextButton.setEnabled(false); // Disable Next button initially
+        nextButton.setEnabled(false);
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,11 +71,10 @@ public class PastPaperActivity extends AppCompatActivity {
             }
         });
 
-        // Add a listener to the RadioGroup to update the score when an answer is selected
+
         answersRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-//                calculateMarks();
                 nextButton.setEnabled(true); // Enable Next button when an answer is selected
             }
         });
@@ -89,7 +86,6 @@ public class PastPaperActivity extends AppCompatActivity {
         // Set the image for the question
         questionImageView.setImageResource(questionImages[currentQuestionIndex]);
 
-        // Clear previously added radio buttons
         answersRadioGroup.removeAllViews();
 
         // Add new radio buttons for the current question's answers
