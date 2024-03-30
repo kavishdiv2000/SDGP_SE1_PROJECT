@@ -14,24 +14,15 @@
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/close"
-        android:onClick="exit"/>
-
-    <TextView
-        android:id="@+id/scoreTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Your Score: "
-        android:textColor="#0b80a7"
-        android:textSize="30sp" />
+        android:onClick="onExit"/>
 
     <TextView
         android:id="@+id/textScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/scoreTextView"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:text="Your Score: "
         android:textColor="#0b80a7"
         android:textSize="30sp" />
 
