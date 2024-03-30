@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="your_score">Your Score</string>
+    <string name="marks">30</string>
 </resources>
