@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -42,7 +43,7 @@ public class ReviseHubConfig extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_revise_hub_config);
-        textView = findViewById(R.id.testText);
+//        textView = findViewById(R.id.testText);
 //
         Intent intent = getIntent();
         if (intent != null) {
@@ -71,24 +72,18 @@ public class ReviseHubConfig extends AppCompatActivity {
              public void onClick(View v) {
 
                  Log.i("MyTag", "button pressed");
+                 btnGenerate.setEnabled(false);
                  makeApiRequest();
 
              }
         });
 
 
-
-
-
-
-
-
-
     }
 
     private void makeApiRequest(){
         String apiUrl = "https://sdgp-se1-project.onrender.com/api/paper/process-generate-content";
-        String jwtToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiaGkgaG93IGFyZSB5b3UiLCJpYXQiOjE3MTEyNjA1NjksImV4cCI6MTcxMTQzMzM2OX0.puodplWYkaUIUvg43F0qISfsF5TOa9Pb52HDG0TUcaA";
+        String jwtToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiaGkgaG93IGFyZSB5b3UiLCJpYXQiOjE3MTEzODQ5NTgsImV4cCI6MTcxMTU1Nzc1OH0.1aNUnF_7aGVxaquKbcvOlI4SKHyKCUPfnW7tCQD4CE0";
 
         OkHttpClient client = new OkHttpClient();
 
@@ -114,6 +109,8 @@ public class ReviseHubConfig extends AppCompatActivity {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e("API_ERROR", "API request failed: " + e.getMessage());
+                Toast.makeText(ReviseHubConfig.this, "Connection issue, check the internet connection.", Toast.LENGTH_SHORT).show();
+                btnGenerate.setEnabled(true);
             }
 
             @Override
@@ -123,19 +120,30 @@ public class ReviseHubConfig extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
-                            textView.setText(responseBody.toString());
-                            Log.d("myTag",responseBody.toString());
+
+                            Log.d("myTag",responseBody);
                             Log.d("myTag","hi response passed");
 
+                            if(responseBody.contains("{\"message\":\"Error processing content\"}")){
+                                Toast.makeText(ReviseHubConfig.this, "Something went wrong, again give a try!", Toast.LENGTH_SHORT).show();
+                                btnGenerate.setEnabled(true);
+                            }else{
 
-                            JsonReader reader = new JsonReader(new StringReader(responseBody));
-                            reader.setLenient(true); // Set the JsonReader to be lenient
-                            JsonObject jsonObject = JsonParser.parseReader(reader).getAsJsonObject();
-                            handleApiResponse(jsonObject);
+                            Intent intent = new Intent(ReviseHubConfig.this, ReviseHubPaper.class);
+                            intent.putExtra("PAPER_DATA", responseBody);
+                            startActivity(intent);
+
+//                            JsonReader reader = new JsonReader(new StringReader(responseBody));
+//                            reader.setLenient(true); // Set the JsonReader to be lenient
+//                            JsonObject jsonObject = JsonParser.parseReader(reader).getAsJsonObject();
+//                            handleApiResponse(jsonObject);
+                            }
 
 
                         } catch (Exception e) {
                             Log.e("JSON_ERROR", "Error parsing JSON response: " + e.getMessage());
+                            Toast.makeText(ReviseHubConfig.this, "Something went wrong, again give a try!", Toast.LENGTH_SHORT).show();
+                            btnGenerate.setEnabled(true);
                         }
                     }
                 });
@@ -149,11 +157,12 @@ public class ReviseHubConfig extends AppCompatActivity {
 
 
 
+
     }
 
     private void handleApiResponse(JsonObject jsonObject) {
         // Do something with the JsonObject, e.g., display it in the TextView
-        textView.setText(jsonObject.toString());
+//        textView.setText(jsonObject.toString());
         Log.i("MyTag",jsonObject.toString());
     }
 
