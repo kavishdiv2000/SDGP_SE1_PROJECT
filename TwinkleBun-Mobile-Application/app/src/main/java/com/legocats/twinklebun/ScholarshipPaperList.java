@@ -13,7 +13,7 @@ public class ScholarshipPaperList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scholarship_paper_list);
+        setContentView(R.layout.select_paper);
     }
 
     public void startPaper(View view) {

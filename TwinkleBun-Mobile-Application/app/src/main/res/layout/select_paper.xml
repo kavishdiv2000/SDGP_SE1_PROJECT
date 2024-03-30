@@ -12,28 +12,48 @@
         android:text="@string/scholarship_past_papers"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@android:color/holo_blue_light"
         android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select the Year"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        android:textColor="@android:color/holo_purple"
+        android:layout_marginBottom="16dp"
+        android:layout_gravity="end"/>
 
     <Button
         android:id="@+id/button1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="Paper 1"
-        android:layout_marginBottom="8dp"/>
+        android:textColor="@color/white"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rounded_button"/>
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="Paper 2"
-        android:layout_marginBottom="8dp"/>
+        android:textColor="@color/white"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rounded_button"/>
 
     <Button
         android:id="@+id/button3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="Paper 3"
-        android:layout_marginBottom="8dp"/>
+        android:textColor="@color/white"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rounded_button"/>
 
 
 </LinearLayout>
