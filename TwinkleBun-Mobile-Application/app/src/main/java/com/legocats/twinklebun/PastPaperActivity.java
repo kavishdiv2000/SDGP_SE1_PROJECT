@@ -1,6 +1,5 @@
 package com.legocats.twinklebun;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,23 +11,21 @@ import androidx.appcompat.app.AppCompatActivity;
 public class PastPaperActivity extends AppCompatActivity {
 
     private int[] questionImages = {
-            R.drawable.question1, // Replace with actual image resources
+            R.drawable.question1,
             R.drawable.question2,
-            // Add corresponding image resources for each question
     };
 
     private String[][] answers = {
             {"A. London", "B. Paris", "C. Berlin", "D. Rome"},
             {"A. Pacific Ocean", "B. Atlantic Ocean", "C. Indian Ocean", "D. Arctic Ocean"},
-            // Add corresponding answers for each question
     };
 
     private int currentQuestionIndex = 0;
 
     private RadioGroup answersRadioGroup;
     private ImageView questionImageView;
+    private Button nextButton;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,14 +33,22 @@ public class PastPaperActivity extends AppCompatActivity {
 
         questionImageView = findViewById(R.id.imageQuestion);
         answersRadioGroup = findViewById(R.id.allAnswers);
+        nextButton = findViewById(R.id.nextButton);
 
+        nextButton.setEnabled(false); // Disable Next button initially
 
-        Button nextButton = findViewById(R.id.nextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                currentQuestionIndex = (currentQuestionIndex + 1) % questionImages.length;
-                displayQuestion();
+                if (isAnswerSelected()) {
+                    if (currentQuestionIndex == questionImages.length - 1) {
+                        endPaper();
+                    } else {
+                        currentQuestionIndex = (currentQuestionIndex + 1) % questionImages.length;
+                        displayQuestion();
+                        nextButton.setEnabled(false); // Disable Next button again for the next question
+                    }
+                }
             }
         });
 
@@ -61,7 +66,25 @@ public class PastPaperActivity extends AppCompatActivity {
         for (int i = 0; i < answers[currentQuestionIndex].length; i++) {
             RadioButton radioButton = new RadioButton(this);
             radioButton.setText(answers[currentQuestionIndex][i]);
+            radioButton.setId(i); // Set unique ID for each radio button
             answersRadioGroup.addView(radioButton);
         }
+
+        // Enable Next button only when an answer is selected
+        answersRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                nextButton.setEnabled(true);
+            }
+        });
+    }
+
+    private boolean isAnswerSelected() {
+        int checkedRadioButtonId = answersRadioGroup.getCheckedRadioButtonId();
+        return checkedRadioButtonId != -1;
+    }
+
+    private void endPaper() {
+        finish();
     }
 }
