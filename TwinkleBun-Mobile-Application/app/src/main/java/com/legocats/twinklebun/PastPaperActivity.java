@@ -12,8 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class PastPaperActivity extends AppCompatActivity {
 
     private int[] questionImages = {
-            R.drawable.back2, // Replace with actual image resources
-            R.drawable.bck,
+            R.drawable.question1, // Replace with actual image resources
+            R.drawable.question2,
             // Add corresponding image resources for each question
     };
 
