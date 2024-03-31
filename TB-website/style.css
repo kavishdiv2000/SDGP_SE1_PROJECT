@@ -58,8 +58,6 @@ nav ul li a:hover {
 #nav-menu li.active a {
   color: #0056b3;
 }
-
-
 .cta-button {
   padding: 10px 20px;
   background-color: #00abf5;
@@ -339,5 +337,3 @@ height: 690px;
     background-positon-x: 0px;
   }
 }
-
-
