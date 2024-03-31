@@ -6,16 +6,14 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.IntentSenderRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.content.IntentSender;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.identity.BeginSignInResult;
@@ -26,55 +24,33 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
-import java.util.Objects;
+public class signup extends AppCompatActivity {
+    private SignInClient oneTapClient;
+    private BeginSignInRequest signUpRequest;
 
-public class Login extends AppCompatActivity {
-    SignInClient oneTapClient;
-    BeginSignInRequest signUpRequest;
-
-    Button button,loginButton;
-
+    Button button;
     private static final int REQ_ONE_TAP = 2;
-    public boolean showOneTapUI = true;
+    private boolean showOneTapUI = true;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_signup);
 
-
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
-
-        button = findViewById(R.id.googleSignInButton);
-        loginButton = findViewById(R.id.loginButton);
+        button = findViewById(R.id.googleButton);
 
         oneTapClient = Identity.getSignInClient(this);
         signUpRequest = BeginSignInRequest.builder()
                 .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
                         .setSupported(true)
-
-                        .setServerClientId(getString(R.string.Web_id))
-
+                        .setServerClientId(getString(R.string.web_client_id))
                         .setFilterByAuthorizedAccounts(false)
                         .build())
                 .build();
 
-
-
-
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Intent mainIntent =  new Intent(Login.this, Home.class);
-                startActivity(mainIntent);
-
-            }
-        });
-
-        ActivityResultLauncher<IntentSenderRequest> activityResultlauncher =
+        ActivityResultLauncher<IntentSenderRequest> activityResultLauncher =
                 registerForActivityResult(new ActivityResultContracts.StartIntentSenderForResult(), new ActivityResultCallback<ActivityResult>() {
                     @Override
                     public void onActivityResult(ActivityResult result) {
@@ -83,10 +59,13 @@ public class Login extends AppCompatActivity {
                                 SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(result.getData());
                                 String idToken = credential.getGoogleIdToken();
                                 if (idToken !=  null) {
-                                    Log.d("TAG", "Got ID token.");
+                                    String email = credential.getId();
+                                    Toast.makeText(getApplicationContext(), "Email: "+email, Toast.LENGTH_SHORT).show();
+//                                    Log.d("TAG", "Got ID token.");
                                 }
                             } catch (ApiException e) {
-                                Log.d("TAG", Objects.requireNonNull(e.getLocalizedMessage()));
+                                e.printStackTrace();
+//                                Log.d("TAG", Objects.requireNonNull(e.getLocalizedMessage()));
                             }
 
                         }
@@ -95,20 +74,21 @@ public class Login extends AppCompatActivity {
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 oneTapClient.beginSignIn(signUpRequest)
-                        .addOnSuccessListener(Login.this, new OnSuccessListener<BeginSignInResult>() {
+                        .addOnSuccessListener(signup.this, new OnSuccessListener<BeginSignInResult>() {
                             @Override
                             public void onSuccess(BeginSignInResult result) {
                                 IntentSenderRequest intentSenderRequest =
                                         new IntentSenderRequest.Builder(result.getPendingIntent().getIntentSender()).build();
-                                activityResultlauncher.launch(intentSenderRequest);
+                                activityResultLauncher.launch(intentSenderRequest);
                             }
                         })
-                        .addOnFailureListener(Login.this, new OnFailureListener() {
+                        .addOnFailureListener(signup.this, new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Log.d("TAG", Objects.requireNonNull(e.getLocalizedMessage()));
+                                // No Google Accounts found. Just continue presenting the signed-out UI.
+                                Log.d("TAG", e.getLocalizedMessage());
                             }
                         });
 

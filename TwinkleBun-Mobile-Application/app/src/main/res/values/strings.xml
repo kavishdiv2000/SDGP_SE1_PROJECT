@@ -11,6 +11,10 @@
     <string name="title_home">Home</string>
     <string name="title_badge">Badges</string>
     <string name="title_Leadership">Leadership Board</string>
+
+    <string name="web_client_id">388392240008-ik0qq9o40bonm0amqdgd8q25brlmt8ff.apps.googleusercontent.com</string>
+    <string name="create_account">Create Account</string>
+    <string name="name">Name</string>
     <string name="todo">TODO</string>
     <string name="attempts">Attempts</string>
     <string name="score">Score</string>
@@ -19,4 +23,5 @@
     <string name="_2">2</string>
     <string name="_3">3</string>
     <string name="_4">4</string>
+
 </resources>

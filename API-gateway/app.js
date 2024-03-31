@@ -8,6 +8,10 @@ const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
+const hpp = require('hpp');
+
 
 require('dotenv').config();
 
@@ -26,6 +30,16 @@ const limiter = rateLimit({
   max: 100, // limit each IP to 100 requests per windowMs
 });
 app.use(limiter); //  apply to all requests
+
+//data santiization against NoSQL query injection
+app.use(mongoSanitize());
+//data santiization against XSS (site scripting attacks)
+app.use(xss());
+//prevent parameter pollution
+app.use(hpp());
+
+
+
 app.use("/api/user",userRoutes); 
 app.use("/api/paper",paperRoutes);
 app.use("/api/authentication",authRoutes);
