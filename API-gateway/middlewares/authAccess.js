@@ -1,5 +1,5 @@
 
-const { verifyToken } = require('../config/jwt');
+const { verifyAccessToken  } = require('../config/jwt');
 require('dotenv').config();
 
 const authJWT  = (req,res,next)=>{
@@ -11,8 +11,9 @@ const authJWT  = (req,res,next)=>{
         }
         
         try {
-            const decoded = verifyToken(token);
-            req.user = decoded;
+            const decoded = verifyAccessToken(token);
+            req.userId = decoded.userId;
+            
             next();
           } catch (error) {
             return res.status(403).json({ message: 'Invalid token' });

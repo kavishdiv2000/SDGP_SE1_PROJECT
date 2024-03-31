@@ -1,4 +1,5 @@
 const generateQuestionsAndAnswers = require('../services/openaiService');
+const User = require('../models/userModel');
 
 const processContent = async (req, res) => {
   
@@ -21,20 +22,27 @@ const processContent = async (req, res) => {
     return res.status(400).json({ message: 'Content should be more than 200 characters' });
   }
 
-  // openaiService.generateQuestionsAndAnswers(content, numOfQuestions)
-  // .then(data => {
-  //   // console.log('Fetched data:', data);
-  //   res.status(200).json({ data})
-  // })
-  // .catch(error => {
-  //   // console.error('Error:', error);
-  //   res.status(500).json({ message: 'Error processing content' });
-  //   // Handle the error
-  // });
+  const splitContent = content.split(' ');
+  if(splitContent.length < 50){
+    return res.status(400).json({ message: 'Content should be more than 50 words' });
+  }
+  const newContent = splitContent.join(' ');
+  const title = splitContent.slice(0, 5).join(' ');
 
+ 
   try {
-    const response = await generateQuestionsAndAnswers(content, numOfQuestions);
-    res.status(200).json({response});
+    const response = await generateQuestionsAndAnswers(newContent, numOfQuestions);
+    const userId = req.userId;
+    const user = await User.findById(userId);
+    user.reviseHub.push({
+      title: title,
+      num: a,
+      score: 0, 
+      questions: response});
+    
+    await user.save();
+
+    res.status(200).json({questions:response});
   } catch (error) {
     console.log(error)
     res.status(500).json({ message: 'Error processing content' });
