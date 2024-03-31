@@ -6,8 +6,11 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.IntentSenderRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,7 +32,8 @@ public class Login extends AppCompatActivity {
     SignInClient oneTapClient;
     BeginSignInRequest signUpRequest;
 
-    Button button;
+    Button button,loginButton;
+
     private static final int REQ_ONE_TAP = 2;
     public boolean showOneTapUI = true;
 
@@ -39,16 +43,36 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
         button = findViewById(R.id.googleSignInButton);
+        loginButton = findViewById(R.id.loginButton);
 
         oneTapClient = Identity.getSignInClient(this);
         signUpRequest = BeginSignInRequest.builder()
                 .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
                         .setSupported(true)
-                        .setServerClientId(getString(R.string.web_client_id))
+
+                        .setServerClientId(getString(R.string.Web_id))
+
                         .setFilterByAuthorizedAccounts(false)
                         .build())
                 .build();
+
+
+
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Intent mainIntent =  new Intent(Login.this, Home.class);
+                startActivity(mainIntent);
+
+            }
+        });
 
         ActivityResultLauncher<IntentSenderRequest> activityResultlauncher =
                 registerForActivityResult(new ActivityResultContracts.StartIntentSenderForResult(), new ActivityResultCallback<ActivityResult>() {

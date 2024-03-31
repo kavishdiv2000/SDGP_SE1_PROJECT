@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/multiplication_background"
+
+    tools:context=".MultiplicationGame">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="126dp"
+
+        android:background="#00089A96"
+        android:elevation="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:id="@+id/heart1"
+                android:layout_width="5dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/todo"
+                app:srcCompat="@drawable/heart" />
+
+            <ImageView
+                android:id="@+id/heart2"
+                android:layout_width="5dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/todo"
+                app:srcCompat="@drawable/heart" />
+
+            <ImageView
+                android:id="@+id/heart3"
+                android:layout_width="5dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/todo"
+                app:srcCompat="@drawable/heart" />
+
+            <ImageView
+                android:id="@+id/heart4"
+                android:layout_width="5dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/todo"
+                app:srcCompat="@drawable/heart" />
+
+            <ImageView
+                android:id="@+id/heart5"
+                android:layout_width="5dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+
+                android:contentDescription="@string/todo"
+                app:srcCompat="@drawable/heart" />
+
+            <Space
+                android:layout_width="123dp"
+                android:layout_height="30dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/close"
+                android:layout_width="1dp"
+                android:layout_height="37dp"
+                android:layout_weight="1"
+
+                android:contentDescription="@string/todo"
+                app:srcCompat="@drawable/ic_baseline_close_24" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/attempts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:text="@string/attempts"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:text="@string/score"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="159dp"
+        android:layout_height="111dp"
+        android:layout_marginBottom="302dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/animwhite" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="81dp"
+        android:layout_marginBottom="40dp"
+        android:gravity="center"
+
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/cal"
+            android:layout_width="221dp"
+            android:layout_height="57dp"
+            android:fontFamily="casual"
+            android:gravity="right"
+
+            android:text="@string/_0"
+            android:textColor="@color/white"
+
+            android:textSize="35sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/correct"
+            android:layout_width="181dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="8dp"
+            android:fontFamily="casual"
+            android:gravity="left"
+            android:text="@string/_0"
+            android:textColor="@color/white"
+
+            android:textSize="35sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="89dp"
+        android:layout_height="62dp"
+
+
+        android:backgroundTint="#DADADA"
+        android:elevation="8dp"
+        android:text="@string/_1"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.257"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.732" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="89dp"
+        android:layout_height="62dp"
+        android:backgroundTint="#DADADA"
+
+        android:elevation="8dp"
+        android:text="@string/_2"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.729"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.732" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="89dp"
+        android:layout_height="62dp"
+        android:backgroundTint="#DADADA"
+        android:elevation="8dp"
+        android:text="@string/_3"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.257"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.393" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="89dp"
+        android:layout_height="62dp"
+        android:backgroundTint="#DADADA"
+        android:elevation="8dp"
+        android:text="@string/_4"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.729"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintVertical_bias="0.393" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

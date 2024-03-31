@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Use profile</string>
+    <string name="user_name">Username</string>
+    <string name="score">Score</string>
+    <string name="email">Email</string>
+    <string name="batch">Batch</string>
+</resources>
