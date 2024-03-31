@@ -35,9 +35,24 @@ const totalScoreUpdate = async (req, res) =>{
     }   
 }
 
+const multilicationHighScoreUpdate = async (req, res) =>{
+    try{
+        const userId = req.userId;
+        const user  = await User.findById(userId);
+        if(req.body.score > user.multiplicationScore){
+            user.multiplicationScore = req.body.score;
+            await user.save();
+        }
+        res.status(200).json({message: 'High score updated'});
+    }catch(error){
+        res.status(500).json({message: 'Internal server error'});
+    }
+}
+
 
 
 module.exports = {
     reviseHubScoreUpdate,
-    totalScoreUpdate
+    totalScoreUpdate,
+    multilicationHighScoreUpdate
 };
