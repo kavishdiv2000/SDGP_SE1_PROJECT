@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e8f4f8"
+    android:background="@drawable/qnmarks"
     android:padding="16dp">
 
     <ImageButton
@@ -22,7 +22,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Your Score: "
+        android:text="Your Score"
+        android:textStyle="bold"
         android:textColor="#0b80a7"
         android:textSize="30sp" />
 
