@@ -1,5 +1,5 @@
 const User = require('../models/userModel');
-const { generateAccessToken,generateRefreshToken} = require('../config/jwt');
+const { generateAccessToken,generateRefreshToken,verifyRefreshToken} = require('../config/jwt');
 const config = require("../config/config")
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose')
@@ -49,6 +49,12 @@ const signin = async (req, res) => {
 
     const accessToken = generateAccessToken({ userId: user._id });
     const refreshToken = generateRefreshToken({ userId: user._id });
+
+    const salt = await bcrypt.genSalt(Number(config.salt));
+    const hashedrefreshToken = await bcrypt.hash(refreshToken, salt);
+    user.refreshToken = hashedrefreshToken;
+    await user.save();
+
     return res.json({ accessToken, refreshToken});
 
   } catch (error) {
@@ -56,7 +62,46 @@ const signin = async (req, res) => {
   };
 }
 
+
+
+const authenticateRefreshToken =async (req, res) => {
+  try {
+    const { refreshToken } = req.body;
+    
+    if (!refreshToken) {
+      return res.status(401).json({ message: 'Access denied, token missing!' });
+    }
+    
+
+    try {
+      const decoded = verifyRefreshToken(refreshToken);
+      req.userId = decoded.userId;
+      
+    } catch (error) {
+      return res.status(403).json({ message: 'Invalid refresh token' });
+    }
+    const user = await User.findOne({ _id: req.userId});
+
+    const isValidRefreshToken = await user.compareRefreshToken(refreshToken);
+
+    if (!user && !isValidRefreshToken) {
+      return res.status(403).json({ message: 'Invalid refresh token' });
+    }
+    if(user && !isValidRefreshToken){
+      return res.status(401).json({ message: 'login again' });
+    }
+
+
+    const accessToken = generateAccessToken({ userId: user._id });
+    
+    res.json({ accessToken });
+  } catch (error) {
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}
+
 module.exports = {
   signup,
-  signin
+  signin,
+  authenticateRefreshToken
 };
