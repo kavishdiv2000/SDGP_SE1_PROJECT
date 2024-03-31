@@ -38,6 +38,8 @@
         android:id="@+id/textViewScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="19dp"
         android:text="@string/score_0_0"/>
 
 </LinearLayout>

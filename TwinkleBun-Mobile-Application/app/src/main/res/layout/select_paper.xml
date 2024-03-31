@@ -12,8 +12,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select the Year"
-        android:textSize="16sp"
+        android:text="@string/select_the_year"
+        android:textSize="26sp"
         android:textStyle="bold"
         android:textColor="@android:color/holo_blue_dark"
         android:layout_marginBottom="16dp"
@@ -23,7 +23,8 @@
         android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="Paper 1"
+        android:textSize="24sp"
+        android:text="@string/_2020"
         android:textColor="@color/white"
         android:backgroundTint="@android:color/holo_blue_dark"
         android:layout_marginBottom="8dp"
@@ -34,7 +35,8 @@
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="Paper 2"
+        android:textSize="24sp"
+        android:text="@string/_2021"
         android:textColor="@color/white"
         android:backgroundTint="@android:color/holo_blue_dark"
         android:layout_marginBottom="8dp"
@@ -45,12 +47,11 @@
         android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="Paper 3"
+        android:textSize="24sp"
+        android:text="@string/_2022"
         android:textColor="@color/white"
         android:backgroundTint="@android:color/holo_blue_dark"
         android:layout_marginBottom="8dp"
         android:background="@drawable/rounded_button"
         android:onClick="onPaperClick"/>
-
-
 </LinearLayout>
