@@ -11,6 +11,7 @@ const router = express.Router();
 
 
 router.put('/updatescore',authMiddleware,scoreController.totalScoreUpdate);
+router.get('/totalscore',authMiddleware,scoreController.totalScore);
 router.put('/revise-hub-score-update',authMiddleware,scoreController.reviseHubScoreUpdate);
 router.get('/profile',authMiddleware,userController.userInfor);
 router.get('/revisepaperlist',authMiddleware,reviseHubPaperController.paperList);
