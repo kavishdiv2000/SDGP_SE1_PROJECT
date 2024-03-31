@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedback Page</title>
+    <link rel="stylesheet" href="feedback.css" />
+  </head>
+  <body>
+    <video autoplay muted loop id="background-video">
+      <source src="backgoundVideo2.mp4" type="video/mp4" />
+    </video>
+
+    <div class="container">
+      <h1>Feedback</h1>
+      <p>Thank you for your valuable feedback!</p>
+      <form onsubmit="sendEmail(); reset(); return false;" >
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required/>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required />
+        </div>
+        <div class="form-group">
+          <label for="feedback">Feedback:</label>
+          <textarea id="feedback" name="feedback" rows="5" placeholder="Enter your feedback" required
+          ></textarea>
+        </div>
+        <div class="button-container">
+          <button type="submit" >Submit</button>
+        </div>
+      </form>
+    </div>
+    <script src=" https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>                  
+    <script>
+     function sendEmail() {
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const feedback = document.getElementById("feedback").value;
+        let ebody = `
+            <b>Name: </b>${name}
+            <br>
+            <b>Email: </b>${email}
+            <br>
+            <b>Feedback: </b>${feedback}
+        `
+            Email.send({
+            SecureToken : "",
+            To : "felishia2002nishani.official@gmail.com",
+            From : "felishia2002nishani.official@gmail.com",
+            Subject : "Feedback Submission",
+            Body : ebody
+        }).then(
+        message => {if(message=='OK'){
+            swal("Submitted", "Your feedback has successfully submitted! ", "success");
+        }else{
+            swal("Failed", "Your feedback has not submitted! ", "error");
+
+        }}
+        );
+     
+     }
+    </script>
+  </body>
+</html>
