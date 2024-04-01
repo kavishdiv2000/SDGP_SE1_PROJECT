@@ -53,7 +53,7 @@ public class Login extends AppCompatActivity {
 
     private String email,password;
     private TokenManager tokenManager;
-    protected EditText emailField,passwordField;
+    private EditText emailField,passwordField;
 
 
     @Override
@@ -74,20 +74,20 @@ public class Login extends AppCompatActivity {
         button = findViewById(R.id.googleSignInButton);
         loginButton = findViewById(R.id.loginButton);
 
-        oneTapClient = Identity.getSignInClient(this);
-        signUpRequest = BeginSignInRequest.builder()
-                .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
-                        .setSupported(true)
-
-                        .setServerClientId(getString(R.string.Web_id))
-
-                        .setFilterByAuthorizedAccounts(false)
-                        .build())
-                .build();
-
-
-
-
+//        oneTapClient = Identity.getSignInClient(this);
+//        signUpRequest = BeginSignInRequest.builder()
+//                .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
+//                        .setSupported(true)
+//
+//                        .setServerClientId(getString(R.string.Web_id))
+//
+//                        .setFilterByAuthorizedAccounts(false)
+//                        .build())
+//                .build();
+//
+//
+//
+//
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,44 +100,54 @@ public class Login extends AppCompatActivity {
 
             }
         });
+//
+//        ActivityResultLauncher<IntentSenderRequest> activityResultlauncher =
+//                registerForActivityResult(new ActivityResultContracts.StartIntentSenderForResult(), new ActivityResultCallback<ActivityResult>() {
+//                    @Override
+//                    public void onActivityResult(ActivityResult result) {
+//                        if (result.getResultCode() == RESULT_OK) {
+//                            try {
+//                                SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(result.getData());
+//                                String idToken = credential.getGoogleIdToken();
+//                                if (idToken !=  null) {
+//                                    Log.d("TAG", "Got ID token.");
+//                                }
+//                            } catch (ApiException e) {
+//                                Log.d("TAG", Objects.requireNonNull(e.getLocalizedMessage()));
+//                            }
+//
+//                        }
+//                    }
+//                });
+//
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                oneTapClient.beginSignIn(signUpRequest)
+//                        .addOnSuccessListener(Login.this, new OnSuccessListener<BeginSignInResult>() {
+//                            @Override
+//                            public void onSuccess(BeginSignInResult result) {
+//                                IntentSenderRequest intentSenderRequest =
+//                                        new IntentSenderRequest.Builder(result.getPendingIntent().getIntentSender()).build();
+//                                activityResultlauncher.launch(intentSenderRequest);
+//                            }
+//                        })
+//                        .addOnFailureListener(Login.this, new OnFailureListener() {
+//                            @Override
+//                            public void onFailure(@NonNull Exception e) {
+//                                Log.d("TAG", Objects.requireNonNull(e.getLocalizedMessage()));
+//                            }
+//                        });
+//
+//            }
+//        });
 
-        ActivityResultLauncher<IntentSenderRequest> activityResultlauncher =
-                registerForActivityResult(new ActivityResultContracts.StartIntentSenderForResult(), new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                        if (result.getResultCode() == RESULT_OK) {
-                            try {
-                                SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(result.getData());
-                                String idToken = credential.getGoogleIdToken();
-                                if (idToken !=  null) {
-                                    Log.d("TAG", "Got ID token.");
-                                }
-                            } catch (ApiException e) {
-                                Log.d("TAG", Objects.requireNonNull(e.getLocalizedMessage()));
-                            }
-
-                        }
-                    }
-                });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                oneTapClient.beginSignIn(signUpRequest)
-                        .addOnSuccessListener(Login.this, new OnSuccessListener<BeginSignInResult>() {
-                            @Override
-                            public void onSuccess(BeginSignInResult result) {
-                                IntentSenderRequest intentSenderRequest =
-                                        new IntentSenderRequest.Builder(result.getPendingIntent().getIntentSender()).build();
-                                activityResultlauncher.launch(intentSenderRequest);
-                            }
-                        })
-                        .addOnFailureListener(Login.this, new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.d("TAG", Objects.requireNonNull(e.getLocalizedMessage()));
-                            }
-                        });
+                Intent intent = new Intent(Login.this, signup.class);
+                startActivity(intent);
 
             }
         });

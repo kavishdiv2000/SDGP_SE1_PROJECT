@@ -43,7 +43,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/firstName"
+                    android:id="@+id/signup_name"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="40dp"
@@ -56,33 +56,22 @@
                     android:textColorHighlight="@color/cardview_dark_background" />
 
                 <EditText
-                    android:id="@+id/lastName"
+                    android:id="@+id/signup_email"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
+                    android:inputType="textEmailAddress"
                     android:background="@drawable/customer_edittext"
                     android:drawableStart="@drawable/email"
                     android:drawablePadding="8dp"
+
                     android:hint="Email"
                     android:padding="8dp"
                     android:textColor="@color/black"
                     android:textColorHighlight="@color/cardview_dark_background" />
 
                 <EditText
-                    android:id="@+id/username"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/customer_edittext"
-                    android:drawableLeft="@drawable/baseline_person_24"
-                    android:drawablePadding="8dp"
-                    android:hint="@string/username"
-                    android:padding="8dp"
-                    android:textColor="@color/black"
-                    android:textColorHighlight="@color/cardview_dark_background" />
-
-                <EditText
-                    android:id="@+id/password"
+                    android:id="@+id/signup_password"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
@@ -96,7 +85,7 @@
                     android:textColorHighlight="@color/cardview_dark_background" />
 
                 <EditText
-                    android:id="@+id/repeatPassword"
+                    android:id="@+id/signup_repeatPassword"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
@@ -125,10 +114,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:backgroundTint="@color/blue"
-                    android:text="Sign up with Goggle"
+                    android:text="Have an Account"
                     android:textSize="16sp"
-                    app:icon="@drawable/google"
-                    app:iconSize="20dp"
+
                     app:cornerRadius="20dp"
                     />
 
