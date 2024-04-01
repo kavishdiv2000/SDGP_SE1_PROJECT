@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -33,6 +34,7 @@ public class HomeFragment extends Fragment {
         final CardView cardSchol = binding.cardScholarship;
         final CardView cardMul = binding.cardMultiply;
         final CardView cardRevise = binding.cardRevisehub;
+
 
         cardSchol.setOnClickListener(new View.OnClickListener() {
             @Override
