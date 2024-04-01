@@ -37,6 +37,7 @@ public class ReviseHubConfig extends AppCompatActivity {
     private NumberPicker numberOfQuiz , timeTakenPerQuiz;
     private Button btnGenerate;
     private String textData;
+    private TokenManager tokenManager;
 //    private Request request;
 
     @Override
@@ -51,6 +52,7 @@ public class ReviseHubConfig extends AppCompatActivity {
 //            textView.setText(textData);
 
         }
+        tokenManager = TokenManager.getInstance(this);
 
         numberOfQuiz = findViewById(R.id.numberPicker_questions);
         numberOfQuiz.setMaxValue(10);
@@ -71,9 +73,52 @@ public class ReviseHubConfig extends AppCompatActivity {
              @Override
              public void onClick(View v) {
 
-                 Log.i("MyTag", "button pressed");
-                 btnGenerate.setEnabled(false);
-                 makeApiRequest();
+                 tokenManager.generateAccessToken(new TokenManager.OnAccessTokenGeneratedListener() {
+                     @Override
+                     public void onSuccess() {
+                         ReviseHubConfig.this.runOnUiThread(new Runnable() {
+                             @Override
+                             public void run() {
+                                 Log.i("MyTag", "button pressed");
+                                 Log.d("refresh token outside", "onsuccess");
+                                 btnGenerate.setEnabled(false);
+                                    makeApiRequest();}
+                         });
+                     }
+
+                     @Override
+                     public void onFailure() {
+                         ReviseHubConfig.this.runOnUiThread(new Runnable() {
+                             @Override
+                             public void run() {
+                                 Toast.makeText(ReviseHubConfig.this, "Connection issue, check the internet connection.", Toast.LENGTH_SHORT).show();
+                                 btnGenerate.setEnabled(true);
+                                 Log.d("refresh token outside", "revisehubconfig");
+                             }
+                         });
+
+                     }
+
+                     @Override
+                     public void onForbidden() {//403
+//                         Toast.makeText(ReviseHubConfig.this, "Something went wrong, try login again!", Toast.LENGTH_SHORT).show();
+                         Intent intent = new Intent(ReviseHubConfig.this, SplashScreen.class);
+                         startActivity(intent);
+                         finish();
+
+                     }
+
+                     @Override
+                     public void onUnauthorized() {//401
+//                         Toast.makeText(ReviseHubConfig.this, "Something went wrong, try login again!", Toast.LENGTH_SHORT).show();
+                         Intent intent = new Intent(ReviseHubConfig.this, SplashScreen.class);
+                         startActivity(intent);
+                         finish();
+
+                     }
+                 });
+
+
 
              }
         });
@@ -82,8 +127,10 @@ public class ReviseHubConfig extends AppCompatActivity {
     }
 
     private void makeApiRequest(){
-        String apiUrl = "https://sdgp-se1-project.onrender.com/api/paper/process-generate-content";
-        String jwtToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiaGkgaG93IGFyZSB5b3UiLCJpYXQiOjE3MTEzODQ5NTgsImV4cCI6MTcxMTU1Nzc1OH0.1aNUnF_7aGVxaquKbcvOlI4SKHyKCUPfnW7tCQD4CE0";
+
+
+        String apiUrl = URIManager.BASE_URI_PAPER+"/process-generate-content";
+        String jwtToken = tokenManager.getAccessToken();
 
         OkHttpClient client = new OkHttpClient();
 
@@ -101,21 +148,27 @@ public class ReviseHubConfig extends AppCompatActivity {
 
         Request request = new Request.Builder()
                 .url(apiUrl)
-                .addHeader("Authorization", "bearer " + jwtToken)
+                .addHeader("Authorization", "Bearer " + jwtToken)
                 .post(body)
                 .build();
 
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.e("API_ERROR", "API request failed: " + e.getMessage());
-                Toast.makeText(ReviseHubConfig.this, "Connection issue, check the internet connection.", Toast.LENGTH_SHORT).show();
-                btnGenerate.setEnabled(true);
+                ReviseHubConfig.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(ReviseHubConfig.this, "Connection issue, check the internet connection.", Toast.LENGTH_SHORT).show();
+                        btnGenerate.setEnabled(true);
+                        Log.e("API_ERROR", "API request failed: " + e.getMessage());
+                    }
+                });
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 final String responseBody = response.body().string();
+                final int statusCode = response.code();
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -124,19 +177,38 @@ public class ReviseHubConfig extends AppCompatActivity {
                             Log.d("myTag",responseBody);
                             Log.d("myTag","hi response passed");
 
-                            if(responseBody.contains("{\"message\":\"Error processing content\"}")){
-                                Toast.makeText(ReviseHubConfig.this, "Something went wrong, again give a try!", Toast.LENGTH_SHORT).show();
+                            if(statusCode == 500){
+                                Toast.makeText(ReviseHubConfig.this, "Server Error, try again!", Toast.LENGTH_SHORT).show();
                                 btnGenerate.setEnabled(true);
-                            }else{
+                            }else if(statusCode==400){
+                                try{
+                                    JSONObject jsonResponse = new JSONObject(responseBody);
+
+                                    String errorMessage = jsonResponse.getString("message");
+                                    Toast.makeText(ReviseHubConfig.this, errorMessage, Toast.LENGTH_SHORT).show();
+                                    btnGenerate.setEnabled(true);
+
+
+
+                                }catch (JSONException e){
+                                    Log.e("JSON_ERROR", "Error parsing JSON response: " + e.getMessage());
+                                    Toast.makeText(ReviseHubConfig.this, "Something went wrong, try again!", Toast.LENGTH_SHORT).show();
+
+                                }
+                            }else if(statusCode == 401 || statusCode == 403){
+                                Toast.makeText(ReviseHubConfig.this, "Something went wrong, try login again!", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(ReviseHubConfig.this, ErrorActivity.class);
+                                startActivity(intent);
+                                finish();
+                            } else{
+                                int time = numberOfQuiz.getValue() * timeTakenPerQuiz.getValue();
 
                             Intent intent = new Intent(ReviseHubConfig.this, ReviseHubPaper.class);
                             intent.putExtra("PAPER_DATA", responseBody);
+                            intent.putExtra("TIME_TAKEN",String.valueOf(time));
                             startActivity(intent);
+                            finish();
 
-//                            JsonReader reader = new JsonReader(new StringReader(responseBody));
-//                            reader.setLenient(true); // Set the JsonReader to be lenient
-//                            JsonObject jsonObject = JsonParser.parseReader(reader).getAsJsonObject();
-//                            handleApiResponse(jsonObject);
                             }
 
 

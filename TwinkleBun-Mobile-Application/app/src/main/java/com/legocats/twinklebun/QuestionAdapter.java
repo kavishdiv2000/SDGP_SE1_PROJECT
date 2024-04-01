@@ -67,7 +67,8 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
                     if (checkedId != -1) {
                         RadioButton checkedRadioButton = itemView.findViewById(checkedId);
                         String userAnswer = checkedRadioButton.getText().toString();
-                        userAnswers.set(position, userAnswer);
+                        int selectedRadioButtonIndex = group.indexOfChild(group.findViewById(checkedId));
+                        userAnswers.set(position, String.valueOf((selectedRadioButtonIndex+1)));
                     } else {
                         userAnswers.set(position, null);
                     }
