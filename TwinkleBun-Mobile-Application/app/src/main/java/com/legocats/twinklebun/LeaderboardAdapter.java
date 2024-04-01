@@ -13,8 +13,8 @@ import java.util.List;
 
 public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.ViewHolder> {
 
-    private List<LeaderboardItem> leaderboardItems;
-    private int currentUserIndex;
+    private  List<LeaderboardItem> leaderboardItems;
+    private  int currentUserIndex;
 
     public LeaderboardAdapter(List<LeaderboardItem> leaderboardItems, int currentUserIndex) {
         this.leaderboardItems = leaderboardItems;
@@ -37,10 +37,10 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
 
         if (position == currentUserIndex) {
             holder.tvRank.setText((position + 1) + ".");
-            holder.itemView.setBackgroundColor(Color.YELLOW);
+            holder.itemView.setBackgroundColor(Color.parseColor("#25D6FA"));
         } else {
-            holder.tvRank.setText("");
-            holder.itemView.setBackgroundColor(Color.TRANSPARENT);
+            holder.tvRank.setText((position + 1) + ".");
+            holder.itemView.setBackgroundColor(Color.WHITE);
         }
     }
 
