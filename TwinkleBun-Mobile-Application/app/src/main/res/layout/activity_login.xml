@@ -37,15 +37,16 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/username"
+                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="40dp"
                 android:background="@drawable/customer_edittext"
                 android:drawableStart="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
-                android:hint="@string/username"
+                android:hint="Email"
                 android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
                 android:padding="8dp"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background"
@@ -86,11 +87,11 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/blue"
                 android:paddingStart="16dp"
-                android:text="@string/sign_in_with_google"
+                android:text="create a Account"
                 android:textColor="@color/white"
-                app:icon="@drawable/google"
-                app:iconTint="@color/white"
+
                 app:cornerRadius="20dp"
+
                 app:iconSize="24dp"
                 tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
 
