@@ -15,8 +15,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.legocats.twinklebun.MultiplicationList;
+import com.legocats.twinklebun.PastPaperActivity;
 import com.legocats.twinklebun.ReviseHubMain;
-import com.legocats.twinklebun.ScholarshipPaperList;
 import com.legocats.twinklebun.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 cardSchol.setCardElevation(1);
-                Intent intent = new Intent(getActivity(), ScholarshipPaperList.class);
+                Intent intent = new Intent(getActivity(), PastPaperActivity.class);
                 startActivity(intent);
 
                 new Handler().postDelayed(new Runnable() {

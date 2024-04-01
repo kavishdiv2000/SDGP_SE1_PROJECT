@@ -24,4 +24,13 @@
     <string name="_3">3</string>
     <string name="_4">4</string>
 
+    <string name="scholarship_past_papers">Scholarship Past Papers</string>
+    <string name="next_question">Next Question</string>
+    <string name="score_0_0">Score: 0/0</string>
+    <string name="select_the_year">Select the Year</string>
+    <string name="_2020">2020</string>
+    <string name="_2021">2021</string>
+    <string name="_2022">2022</string>
+    <string name="your_score">Your Score</string>
+
 </resources>
