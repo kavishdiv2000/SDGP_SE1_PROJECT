@@ -1,6 +1,7 @@
 package com.legocats.twinklebun;
 
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,10 +38,12 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
 
         if (position == currentUserIndex) {
             holder.tvRank.setText((position + 1) + ".");
-            holder.itemView.setBackgroundColor(Color.parseColor("#25D6FA"));
+            holder.itemView.setBackgroundColor(Color.CYAN);
+            Log.d("cyan color", "onBindViewHolder: ");
         } else {
             holder.tvRank.setText((position + 1) + ".");
             holder.itemView.setBackgroundColor(Color.WHITE);
+            Log.d("white color", "onBindViewHolder: ");
         }
     }
 
