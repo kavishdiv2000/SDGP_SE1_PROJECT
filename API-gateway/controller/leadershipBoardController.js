@@ -12,12 +12,18 @@ const leadershipBoard = async (req, res) =>{
         const users = await User.find({}).sort({overallScore: -1}).limit(10);
         const leaders = users.map(user => {return {"name":user.name, "overallScore":user.overallScore, "id":user._id}});
 
+        
+
         if(rank>9){
             leaders[9] = {"name":user.name, "overallScore":user.overallScore, "id":user._id};
             return res.status(200).json({"leaders":leaders, "rank":rank, "index":9});
         }else{
             leaders.sort((a, b) => b.score - a.score);
-            const index = leaders.findIndex(currentUser =>{ return currentUser.id+" "=== user._id+" ";});
+            let index = leaders.findIndex(currentUser =>{ return currentUser.id+" "=== user._id+" ";});
+            if (index === -1){
+                index = rank-1;
+                leaders.splice(index, 0, {"name":user.name, "overallScore":user.overallScore, "id":user._id})
+            }
             return res.status(200).json({"leaders":leaders, "rank":rank, "index":index});
         }
         
