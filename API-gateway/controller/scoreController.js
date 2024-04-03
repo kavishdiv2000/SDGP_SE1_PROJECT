@@ -9,7 +9,7 @@ const reviseHubScoreUpdate = async (req, res) =>{
 
 
         // const paperId = req.query.id;
-        console.log(paperId);
+        // console.log(paperId);
         // var paper = user.reviseHub.id(paperId);
         // if(!paper){
         //     return res.status(404).json({message: 'Paper not found'});
@@ -17,6 +17,7 @@ const reviseHubScoreUpdate = async (req, res) =>{
         // paper.score = paperId;
         user.reviseHubScore = user.reviseHubScore + paperScore;
         await user.save();
+        res.status(200).json({message: 'Score updated'});
     }catch(error){
         res.status(500).json({message: 'Internal server error'});
     }
