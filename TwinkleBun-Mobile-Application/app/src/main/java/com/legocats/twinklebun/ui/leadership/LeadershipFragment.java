@@ -75,8 +75,8 @@ public class LeadershipFragment extends Fragment {
 
 
 
-        leaderboardAdapter = new LeaderboardAdapter(leaderboardItems, currentUserIndex);
-        rvLeaderboard.setAdapter(leaderboardAdapter);
+//        leaderboardAdapter = new LeaderboardAdapter(leaderboardItems, currentUserIndex);
+//        rvLeaderboard.setAdapter(leaderboardAdapter);
 
         return view;
 
@@ -87,8 +87,8 @@ public class LeadershipFragment extends Fragment {
 
     private static class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.ViewHolder> {
 
-        private List<LeaderboardItem> leaderboardItems;
-        private int currentUserIndex;
+        private final List<LeaderboardItem> leaderboardItems;
+        private final int currentUserIndex;
 
         public LeaderboardAdapter(List<LeaderboardItem> leaderboardItems, int currentUserIndex) {
             this.leaderboardItems = leaderboardItems;
@@ -120,6 +120,7 @@ public class LeadershipFragment extends Fragment {
 
         @Override
         public int getItemCount() {
+            Log.d("size-get item count", String.valueOf(leaderboardItems));
             return leaderboardItems != null ? leaderboardItems.size() : 0;
         }
 
@@ -166,11 +167,24 @@ public class LeadershipFragment extends Fragment {
                 progressDialog.dismiss();
                 String responseData = response.body().string();
                 final int statusCode = response.code();
+                Log.d("response", responseData);
 
                     if (statusCode==200) {
 
 
-                        leaderboardItems = updateLeaderboard(responseData);
+                        leaderboardItems = new ArrayList<>(updateLeaderboard(responseData));
+                        Log.d("size", String.valueOf(leaderboardItems.size()));
+
+                        requireActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                leaderboardAdapter = new LeadershipFragment.LeaderboardAdapter(leaderboardItems, currentUserIndex);
+                                rvLeaderboard.setAdapter(leaderboardAdapter);
+                            }
+                        });
+
+
+
                     } else {
                         // Handle unsuccessful response
                     }
@@ -181,7 +195,7 @@ public class LeadershipFragment extends Fragment {
     }
 
     private List<LeaderboardItem> updateLeaderboard(String responseData){
-        List<LeaderboardItem> leaderboardItems = new ArrayList<>();
+        List<LeaderboardItem> leaderboardItemArr = new ArrayList<>();
         try {
             JSONObject mainObject = new JSONObject(responseData);
             JSONArray responseArray = mainObject.getJSONArray("leaders");
@@ -199,13 +213,13 @@ public class LeadershipFragment extends Fragment {
                 LeaderboardItem q = new LeaderboardItem(name,overallScore,id);
 
 
-                leaderboardItems.add(q);
+                leaderboardItemArr.add(q);
             }
         } catch (JSONException e) {
             Log.e("JSON_ERROR", "Error parsing JSON response: " + e.getMessage());
 //            throw new RuntimeException(e);
         }
-        return leaderboardItems;
+        return leaderboardItemArr;
     }
 
 
