@@ -4,17 +4,19 @@ const User = require('../models/userModel');
 const reviseHubScoreUpdate = async (req, res) =>{
     try{
         const userId = req.userId;
-        const user  = await User.findById(userId);  
+        const user  = await User.findById(userId);
+        const paperScore = req.body.score;
 
-        const paperId = req.query.id;
+
+        // const paperId = req.query.id;
         console.log(paperId);
-        var paper = user.reviseHub.id(paperId);
-        if(!paper){
-            return res.status(404).json({message: 'Paper not found'});
-        }
-        paper.score = paperId;
+        // var paper = user.reviseHub.id(paperId);
+        // if(!paper){
+        //     return res.status(404).json({message: 'Paper not found'});
+        // }
+        // paper.score = paperId;
+        user.reviseHubScore = user.reviseHubScore + paperScore;
         await user.save();
-        res.status(200).json({message: 'Score updated'});
     }catch(error){
         res.status(500).json({message: 'Internal server error'});
     }
