@@ -20,9 +20,13 @@ const leadershipBoard = async (req, res) =>{
         }else{
             leaders.sort((a, b) => b.score - a.score);
             let index = leaders.findIndex(currentUser =>{ return currentUser.id+" "=== user._id+" ";});
-            if (index === -1 || (index+1) !== rank){
+            if (index === -1 ){
                 index = rank-1;
                 leaders.splice(index, 0, {"name":user.name, "overallScore":user.overallScore, "id":user._id})
+            }else if((index+1) !== rank){
+                leaders.splice(index, 1);
+                index = rank-1;
+                leaders.splice(index , 0, {"name":user.name, "overallScore":user.overallScore, "id":user._id});
             }
             return res.status(200).json({"leaders":leaders, "rank":rank, "index":index});
         }
