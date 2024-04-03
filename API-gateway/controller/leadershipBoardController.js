@@ -14,7 +14,7 @@ const leadershipBoard = async (req, res) =>{
 
         
 
-        if(rank>9){
+        if(rank>10){
             leaders[9] = {"name":user.name, "overallScore":user.overallScore, "id":user._id};
             return res.status(200).json({"leaders":leaders, "rank":rank, "index":9});
         }else{
